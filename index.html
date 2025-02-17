@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cat Facts Generator</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .fact-display {
+            margin-top: 20px;
+            font-size: 18px;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Random Cat Facts</h1>
+        <button id="generateFact">Get a Cat Fact</button>
+        <div id="factDisplay" class="fact-display"></div>
+    </div>
+    <script>
+        const catFacts = [
+            {
+                "fact": "Cats have five toes on their front paws, but only four toes on their back paws."
+            },
+            {
+                "fact": "A group of cats is called a clowder."
+            },
+            {
+                "fact": "Cats can rotate their ears 180 degrees."
+            },
+            {
+                "fact": "The average cat sleeps for 12 to 16 hours a day."
+            },
+            {
+                "fact": "Cats can make over 100 different sounds."
+            },
+            {
+                "fact": "A cat's nose print is unique, much like a human fingerprint."
+            },
+            {
+                "fact": "Cats can jump up to six times their body length in one leap."
+            },
+            {
+                "fact": "The world's oldest cat lived to be 38 years old."
+            },
+            {
+                "fact": "Cats have a special reflective layer behind their retinas called the tapetum lucidum, which helps them see in low light."
+            },
+            {
+                "fact": "Domestic cats are descended from the African wildcat."
+            }
+        ];
+
+        document.getElementById('generateFact').addEventListener('click', function() {
+            const randomIndex = Math.floor(Math.random() * catFacts.length);
+            const fact = catFacts[randomIndex].fact;
+            const factDisplay = document.getElementById('factDisplay');
+            factDisplay.textContent = fact;
+            factDisplay.classList.remove('fadeIn');
+            void factDisplay.offsetWidth; // Trigger reflow
+            factDisplay.classList.add('fadeIn');
+        });
+    </script>
+</body>
+</html>
+
